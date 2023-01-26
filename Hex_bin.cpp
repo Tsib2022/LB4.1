@@ -34,22 +34,24 @@ const uint8_t* as_bytes(const void* data) {
 void print_in_hex(const void* data, size_t size) {
   const uint8_t* bytes = as_bytes(data);
   for (size_t i = 0; i < size; ++i) {
-    if (i % 16 == 0) {
-      std::cout << std::endl;
-    }
     print_in_hex(bytes[i]);
-    std::cout << " ";
+    if ((i + 1) % 16 == 0) {
+      std::cout << std::endl;
+    } else {
+      std::cout << " ";
+    }
   }
 }
  
 void print_in_binary(const void* data, size_t size) {
   const uint8_t* bytes = as_bytes(data);
   for (size_t i = 0; i < size; ++i) {
-    if (i % 4 == 0) {
-      std::cout << std::endl;
-    }
     print_in_binary(bytes[i]);
-    std::cout << " ";
+    if ((i + 1) % 4 == 0) {
+      std::cout << std::endl;
+    } else {
+      std::cout << " ";
+    }
   }
 }
  
