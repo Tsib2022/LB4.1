@@ -59,6 +59,24 @@ void print_in_binary(const void* data, size_t size) {
     std::cout << " ";
   }
 }
- 
+void test() {
+  assert(nibble_to_hex(0x0) == '0');
+  assert(nibble_to_hex(0x1) == '1');
+  assert(nibble_to_hex(0x2) == '2');
+  assert(nibble_to_hex(0x3) == '3');
+  assert(nibble_to_hex(0x4) == '4');
+  assert(nibble_to_hex(0x5) == '5');
+  assert(nibble_to_hex(0x6) == '6');
+  assert(nibble_to_hex(0x7) == '7');
+  assert(nibble_to_hex(0x8) == '8');
+  assert(nibble_to_hex(0x9) == '9');
+  assert(nibble_to_hex(0xA) == 'A');
+  assert(nibble_to_hex(0xB) == 'B');
+  assert(nibble_to_hex(0xC) == 'C');
+  assert(nibble_to_hex(0xD) == 'D');
+  assert(nibble_to_hex(0xE) == 'E');
+  assert(nibble_to_hex(0xF) == 'F');
+}
 int main() {
+  test();
 }
