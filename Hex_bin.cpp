@@ -92,4 +92,17 @@ int main() {
   std::cout << "u8 bytes: ";
   print_in_hex(&u8, sizeof(u8));
   std::cout << '\n';
+ 
+  uint32_t bu32 = 42;
+  std::cout << "u32 bytes: ";
+  print_in_binary(&bu32, sizeof(u32));
+  std::cout << '\n';
+  uint16_t bu16 = 42;
+  std::cout << "u16 bytes: ";
+  print_in_binary(&bu16, sizeof(u16));
+  std::cout << '\n';
+  uint8_t bu8 = 42;
+  std::cout << "u8 bytes: ";
+  print_in_binary(&bu8, sizeof(u8));
+  std::cout << '\n';
 }
