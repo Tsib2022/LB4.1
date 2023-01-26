@@ -4,29 +4,18 @@
 #include <algorithm>
 #include <cassert>
  
-char nibble_to_hex(uint8_t x) {
-  if (0 <= x && x < 10) {
-    return '0' + x;
+char nibble_to_hex(uint8_t i) {
+  assert(0x0 <= i && i <= 0xf);
+  if (0 <= i && i < 10) {
+    return '0' + i;
   } else {
-    return 'A' + x - 10;
+    return 'A' + i - 10;
   }
 }
  
 void print_in_hex(uint8_t byte) {
-  std::string hex_byte = "";
-  int cnt = 0;
-  while (byte != 0) {
-    uint8_t x = byte % 16;
-    hex_byte += nibble_to_hex(x);
-    byte /= 16;
-    ++cnt;
-  }
-  while (cnt < 2) {
-    hex_byte += '0';
-    ++cnt;
-  }
-  std::reverse(hex_byte.begin(), hex_byte.end());
-  std::cout << hex_byte;
+  std::cout << nibble_to_hex((byte & 0xF0) >> 4);
+  std::cout << nibble_to_hex((byte & 0xF));
 }
  
 void print_in_binary(uint8_t byte) {
@@ -59,6 +48,7 @@ void print_in_binary(const void* data, size_t size) {
     std::cout << " ";
   }
 }
+ 
 void test() {
   assert(nibble_to_hex(0x0) == '0');
   assert(nibble_to_hex(0x1) == '1');
@@ -78,5 +68,6 @@ void test() {
   assert(nibble_to_hex(0xF) == 'F');
 }
 int main() {
+  print_in_hex(255);
   test();
 }
