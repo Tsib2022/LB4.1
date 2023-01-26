@@ -27,8 +27,12 @@ void print_in_binary(uint8_t byte) {
  
 }
  
+const uint8_t* as_bytes(const void* data) {
+  return reinterpret_cast<const uint8_t*>(data);
+}
+ 
 void print_in_hex(const void* data, size_t size) {
-  const uint8_t* bytes = reinterpret_cast<const uint8_t*>(data);
+  const uint8_t* bytes = as_bytes(data);
   for (size_t i = 0; i < size; ++i) {
     if (i % 16 == 0) {
       std::cout << std::endl;
@@ -39,7 +43,7 @@ void print_in_hex(const void* data, size_t size) {
 }
  
 void print_in_binary(const void* data, size_t size) {
-  const uint8_t* bytes = reinterpret_cast<const uint8_t*>(data);
+  const uint8_t* bytes = as_bytes(data);
   for (size_t i = 0; i < size; ++i) {
     if (i % 4 == 0) {
       std::cout << std::endl;
@@ -71,12 +75,21 @@ int main() {
   test();
  
   print_in_hex(0x0);
-  std::cout << std::endl;
+  std::cout << '\n';
   print_in_hex(0xAB);
-  std::cout << std::endl;
+  std::cout << '\n';
   print_in_hex(0xFF);
-  std::cout << std::endl;
- 
- 
-}
+  std::cout << '\n';
+  uint32_t u32 = 0x42;
+  std::cout << "u32 bytes: ";
+  print_in_hex(&u32, sizeof(u32));
+  std::cout << '\n';
+  uint16_t u16 = 0x42;
+  std::cout << "u16 bytes: ";
+  print_in_hex(&u16, sizeof(u16));
+  std::cout << '\n';
+  uint8_t u8 = 0x42;
+  std::cout << "u8 bytes: ";
+  print_in_hex(&u8, sizeof(u8));
+  std::cout << '\n';
 }
