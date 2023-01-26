@@ -14,7 +14,7 @@ char nibble_to_hex(uint8_t i) {
 }
  
 void print_in_hex(uint8_t byte) {
-  std::cout << nibble_to_hex((byte & 0xF0) >> 4);
+  std::cout << nibble_to_hex(byte >> 4);
   std::cout << nibble_to_hex((byte & 0xF));
 }
  
@@ -68,6 +68,15 @@ void test() {
   assert(nibble_to_hex(0xF) == 'F');
 }
 int main() {
-  print_in_hex(255);
   test();
+ 
+  print_in_hex(0x0);
+  std::cout << std::endl;
+  print_in_hex(0xAB);
+  std::cout << std::endl;
+  print_in_hex(0xFF);
+  std::cout << std::endl;
+ 
+ 
+}
 }
